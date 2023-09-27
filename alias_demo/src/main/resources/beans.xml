@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user1" class="org.szh.demo.User" />
+    <alias name="user1" alias="user2"/>
+    <alias name="user2" alias="user3"/>
+    <alias name="user3" alias="user4"/>
+    <alias name="user4" alias="user5"/>
+</beans>

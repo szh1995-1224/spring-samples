@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean class="org.szh.demo.CalculatorImpl" id="calculator"/>
+    <bean class="org.szh.demo.LogAdvice" id="logAdvice"/>
+    <aop:config>
+        <aop:pointcut id="pc" expression="execution(* org.szh.demo.CalculatorImpl.*(..))"/>
+        <aop:aspect ref="logAdvice">
+            <aop:before method="before" pointcut-ref="pc"/>
+            <aop:after method="after" pointcut-ref="pc"/>
+            <aop:after-throwing method="exception" throwing="e" pointcut-ref="pc"/>
+            <aop:after-returning method="returnAdvice" returning="result" pointcut-ref="pc"/>
+            <aop:around method="around" pointcut-ref="pc"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
